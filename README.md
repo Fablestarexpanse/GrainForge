@@ -2,8 +2,6 @@
 
 **GrainForge** is a high-performance, procedural film grain synthesis tool built with **Rust**, **egui**, and **WGPU**. It provides a detailed interface for designing film grain textures with physically inspired parameters.
 
-![GrainForge Interface](interface_screenshot.png)
-
 ## 🚀 Versioning System
 
 GrainForge follows [Semantic Versioning (SemVer)](https://semver.org/).
