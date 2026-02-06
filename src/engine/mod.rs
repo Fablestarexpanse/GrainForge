@@ -1,5 +1,6 @@
 pub mod gpu_context;
 pub mod compute_pipeline;
+pub mod grain_renderer;
 pub mod render_pipeline;
 pub mod texture_manager;
 pub mod shaders;

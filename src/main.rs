@@ -18,23 +18,22 @@ fn main() -> eframe::Result<()> {
 }
 
 struct GrainForgeApp {
-    // Placeholder for app state
+    state: grainforge::app::state::AppState,
 }
 
 impl GrainForgeApp {
-    fn new(_cc: &eframe::CreationContext<'_>) -> Self {
-        // Init wgpu render state here in the future
-        Self {}
+    fn new(cc: &eframe::CreationContext<'_>) -> Self {
+        // Apply custom theme
+        grainforge::app::theme::apply_theme(&cc.egui_ctx);
+        
+        Self {
+            state: grainforge::app::state::AppState::default(),
+        }
     }
 }
 
 impl eframe::App for GrainForgeApp {
     fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
-        egui::CentralPanel::default().show(ctx, |ui| {
-            ui.heading("GrainForge");
-            ui.label("Detailed film grain synthesis tool.");
-            ui.separator();
-            ui.label("Structure initialized successfully.");
-        });
+        grainforge::ui::main_window::show(ctx, &mut self.state);
     }
 }

@@ -11,3 +11,5 @@ coverage/
 # Added by cargo
 
 /target
+Cargo.lock
+build_log.txt

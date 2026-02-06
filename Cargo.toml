@@ -2,22 +2,60 @@
 name = "grainforge"
 version = "0.1.0"
 edition = "2021"
+authors = ["Your Name <you@example.com>"]
+description = "Fictional film grain texture designer"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/yourname/grainforge"
+keywords = ["film", "grain", "texture", "procedural", "photography"]
+categories = ["graphics", "multimedia::images"]
 
 [dependencies]
-eframe = { version = "0.30", default-features = true }
-egui = "0.30"
-# wgpu = "23.0"
+# GUI Framework
+eframe = { version = "0.31", default-features = true, features = ["wgpu"] } # Ensure wgpu is enabled
+egui = "0.31"
+egui-snarl = "0.7"                 # Node graph editor
+egui_extras = "0.31"               # Additional widgets
+
+# GPU Compute
+wgpu = "24"                        # WebGPU implementation
+pollster = "0.4"                   # Async runtime for GPU init
+bytemuck = { version = "1.19", features = ["derive"] }
+
+# Image Processing
+image = { version = "0.25", features = ["png", "tiff"] }
+exr = { version = "1.72", optional = true }   # EXR export (optional)
+
+# Serialization
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
-# image = { version = "0.25", features = ["openexr", "tiff", "png", "jpeg"] }
-bytemuck = { version = "1.16", features = ["derive"] }
-pollster = "0.3"
-rand = "0.8"
+
+# Error Handling
+thiserror = "2.0"
+anyhow = "1.0"
+
+# Utilities
 log = "0.4"
 env_logger = "0.11"
-# egui-snarl = "0.6" # Disabled
+directories = "5.0"                # Platform-specific paths
+uuid = { version = "1.11", features = ["v4"] }
+rand = "0.8"
+parking_lot = "0.12"               # Faster mutexes
+
+# Procedural Noise (CPU fallback)
+noise = "0.9"
+libnoise = "1.1"
+
+[dev-dependencies]
+criterion = "0.5"                  # Benchmarking
 
 [profile.release]
-opt-level = 3
 lto = true
 codegen-units = 1
+panic = "abort"
+
+[profile.dev]
+opt-level = 1                      # Some optimization for GPU code
+
+[features]
+default = []
+exr = ["dep:exr"]              # Optional EXR support

@@ -1,0 +1,119 @@
+﻿cargo :     Checking 
+grainforge v0.1.0 
+(F:\Cursor 
+Projects\GrainForge)
+At line:1 char:1
++ cargo check 2>&1 | 
+Out-File -Encoding UTF8 
+build_log.txt
++ ~~~~~~~~~~~~~~~~
+    + CategoryInfo         
+     : NotSpecified    : ( 
+   Checking gr.    
+..cts\GrainForge):S    
+tring) [], RemoteEx    
+ception
+    + FullyQualifiedErr    
+orId : NativeComman    
+dError
+ 
+warning: unused import: 
+`FontFamily`
+ --> src\app\theme.rs:1:47
+  |
+1 | use egui::{Color32, 
+Context, FontDefinitions, 
+FontFamily, Style, 
+Visuals};
+  |                        
+                       
+^^^^^^^^^^
+  |
+  = note: 
+`#[warn(unused_imports)]` 
+(part of 
+`#[warn(unused)]`) on by 
+default
+
+error[E0308]: mismatched 
+types
+  --> src\engine\gpu_contex
+t.rs:18:21
+   |
+18 |             device: 
+wgpu_state.device.clone(),
+   |                     
+^^^^^^^^^^^^^^^^^^^^^^^^^ 
+expected `Arc<Device>`, 
+found `Device`
+   |
+   = note: expected struct 
+`Arc<wgpu::Device>`
+              found struct 
+`wgpu::Device`
+help: call `Into::into` on 
+this expression to convert 
+`wgpu::Device` into 
+`Arc<wgpu::Device>`
+   |
+18 |             device: wg
+pu_state.device.clone().int
+o(),
+   |                       
+                       
++++++++
+
+error[E0308]: mismatched 
+types
+  --> src\engine\gpu_contex
+t.rs:19:20
+   |
+19 |             queue: 
+wgpu_state.queue.clone(),
+   |                    
+^^^^^^^^^^^^^^^^^^^^^^^^ 
+expected `Arc<Queue>`, 
+found `Queue`
+   |
+   = note: expected struct 
+`Arc<wgpu::Queue>`
+              found struct 
+`wgpu::Queue`
+help: call `Into::into` on 
+this expression to convert 
+`wgpu::Queue` into 
+`Arc<wgpu::Queue>`
+   |
+19 |             queue: wgp
+u_state.queue.clone().into(
+),
+   |                       
+                     
++++++++
+
+warning: variable does not 
+need to be mutable
+  --> src\app\theme.rs:65:9
+   |
+65 |     let mut fonts = 
+FontDefinitions::default();
+   |         ----^^^^^
+   |         |
+   |         help: remove 
+this `mut`
+   |
+   = note: 
+`#[warn(unused_mut)]` 
+(part of 
+`#[warn(unused)]`) on by 
+default
+
+For more information about 
+this error, try `rustc 
+--explain E0308`.
+warning: `grainforge` 
+(lib) generated 2 warnings
+error: could not compile 
+`grainforge` (lib) due to 
+2 previous errors; 2 
+warnings emitted
